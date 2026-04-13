@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -102,7 +103,7 @@ body main section.main-part div.all-inputs form input.class-credit {
 body main section.main-part div.all-inputs form button {
   border: none;
   cursor: pointer;
-  background-color: #272727;
+  background-color: transparent;
 }
 body main section.main-part div.all-inputs form button i {
   font-size: 1.25rem;
@@ -123,7 +124,7 @@ body main section.main-part button.plus-btn i {
 body main section.main-part div.result {
   width: 200px;
   height: 200px;
-  border: 3px solid red;
+  border: 3.5px solid red;
   border-radius: 50%;
   text-align: center;
   animation-name: border_color;
@@ -131,11 +132,19 @@ body main section.main-part div.result {
   animation-iteration-count: infinite;
 }
 body main section.main-part div.result p {
-  margin-top: 15px;
+  margin-top: 30px;
 }
 body main section.main-part div.result h2#result-gpa {
   font-size: 3.5rem;
   font-weight: bold;
+}
+
+.grader {
+  display: flex; /* 開啟彈性盒子，讓子元素水平排列 */
+  align-items: center; /* 讓所有元件垂直對齊中心 */
+  justify-content: center; /* 讓整列內容在中間（若要靠左可改為 flex-start） */
+  gap: 5px; /* 元件之間的間距，可視需求調整（例如 5px 或 10px） */
+  margin-bottom: 10px; /* 每一列之間的垂直距離 */
 }
 
 .remove {
@@ -173,5 +182,74 @@ body main section.main-part div.result h2#result-gpa {
   }
   66% {
     border-color: yellow;
+  }
+}
+.class-type {
+  width: 30%;
+}
+
+.class-number {
+  width: 25%;
+}
+
+.class-credit {
+  width: 15%;
+}
+
+.select {
+  width: 15%;
+}
+
+.trash-button {
+  width: 10%;
+}
+
+.option {
+  min-width: -moz-min-content;
+  min-width: min-content;
+}
+
+/* 當螢幕寬度小於 480px 時觸發（手機版樣式） */
+@media screen and (max-width: 480px) {
+  .grader {
+    display: flex;
+    flex-wrap: wrap; /* 核心設定：允許內容換行 */
+    justify-content: space-between; /* 讓元件自動填滿左右兩端 */
+    background-color: rgba(79, 76, 76, 0.532);
+    padding: 10px 5px;
+    border-radius: 10px;
+    margin-bottom: 20px; /* 每組科目之間的距離加大 */
+  }
+  /* --- 類別與編號 --- */
+  .class-type {
+    width: 50%; /* 佔據左邊較大空間 */
+    margin-bottom: 5px; /* 與下排產生間隔 */
+  }
+  .class-number {
+    width: 40%; /* 佔據右邊剩餘空間 */
+    margin-bottom: 5px;
+  }
+  /* --- 學分、等第、垃圾桶 --- */
+  .class-credit {
+    width: 30%; /* 學分佔 30% */
+  }
+  .select {
+    width: 50%; /* 下拉選單佔 50%，這樣選單會變大很多！ */
+  }
+  .trash-button {
+    width: 10%; /* 調整寬度比例 */
+    background-color: transparent;
+    padding: 0;
+  }
+  .trash-button i {
+    font-size: 1.2rem;
+  }
+  /* 統一手機版輸入框的高度與字體，讓它更好點擊 */
+  .grader input,
+  .grader select {
+    height: 40px; /* 加高，適合手指點擊 */
+    font-size: 16px; /* 防止 iOS 自動放大畫面 (iOS 規定 16px 以上不縮放) */
+    padding: 5px;
+    box-sizing: border-box; /* 確保 padding 不會撐破寬度 */
   }
 }/*# sourceMappingURL=style.css.map */
