@@ -33,45 +33,52 @@ function creatSnake() {
 }
 
 class Fruit {
-  constructor() {
-    this.x = Math.floor(Math.random() * column) * unit;
-    this.y = Math.floor(Math.random() * row) * unit;
+  constructor(color, scoreValue) {
+    this.color = color;
+    this.scoreValue = scoreValue;
+    this.pickALocation();
   }
 
   drawFruit() {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, unit, unit);
   }
   //選定隨機座標
-  pickALocation() {
+  pickALocation(otherFruit = null) {
     let overlapping = false;
-    let new_x;
-    let new_y;
+    let new_x, new_y;
 
-    function checkOverLap(new_x, new_y) {
-      for (let i = 0; i < snake.length; i++) {
-        if (new_x == snake[i].x && new_y == snake[i].y) {
-          console.log("overlapping...");
-          overlapping = true;
-          return;
-        } else {
-          overlapping = false;
-        }
-      } //隨機x座標=蛇的座標x && 隨機y座標=蛇的座標y
-    }
     do {
+      overlapping = false;
       new_x = Math.floor(Math.random() * column) * unit;
       new_y = Math.floor(Math.random() * row) * unit;
-      checkOverLap(new_x, new_y);
-    } while (overlapping); //是true的時候要持續do
+
+      // 檢查是否撞到蛇
+      for (let i = 0; i < snake.length; i++) {
+        if (new_x == snake[i].x && new_y == snake[i].y) {
+          overlapping = true;
+          break;
+        }
+      }
+
+      // 是否撞到另一顆果實 (新增邏輯)
+      if (!overlapping && otherFruit) {
+        if (new_x === otherFruit.x && new_y === otherFruit.y) {
+          overlapping = true;
+        }
+      }
+    } while (overlapping); // 如果重疊，重新執行 do
 
     this.x = new_x;
     this.y = new_y;
   }
 }
+// 初始化
+let greenFruit = new Fruit("green", 1);
+let purpleFruit = new Fruit("purple", -1);
+
 //初始設定
 creatSnake();
-let myFruit = new Fruit();
 window.addEventListener("keydown", changeDirection);
 let d = "Right";
 function changeDirection(e) {
@@ -116,8 +123,8 @@ function draw() {
   ctx.fillStyle = "rgb(1, 0, 12)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  myFruit.drawFruit();
-
+  greenFruit.drawFruit();
+  purpleFruit.drawFruit();
   //畫出蛇
   for (let i = 0; i < snake.length; i++) {
     if (i == 0) {
@@ -164,18 +171,25 @@ function draw() {
 
   //確認蛇是否吃到果實
   //x,y重疊時
-  if (snake[0].x == myFruit.x && snake[0].y == myFruit.y) {
-    //重新選定果實隨機位置
-    myFruit.pickALocation();
-    score++;
-    setHighestScore(score); //判斷需不需要更新
-    document.getElementById("myScore").innerHTML = "遊戲分數:" + score;
-    document.getElementById("myScore2").innerHTML = "最高分數:" + highestScore;
-  } else {
-    snake.pop();
+  let ateSomething = false;
+  [greenFruit, purpleFruit].forEach((f) => {
+    if (snake[0].x == f.x && snake[0].y == f.y) {
+      //重新選定果實隨機位置
+      f.pickALocation();
+      score += f.scoreValue;
+      if (score < 0) score = 0; // 防止分數變成負的
+      setHighestScore(score); //判斷需不需要更新
+      document.getElementById("myScore").innerHTML = "遊戲分數:" + score;
+      document.getElementById("myScore2").innerHTML =
+        "最高分數:" + highestScore;
+      ateSomething = true; // 標記吃到東西了
+    }
+  });
+  if (!ateSomething) {
+    snake.pop(); // 沒吃到東西時,要把最後一段尾巴刪掉(防止蛇長度增長)
   }
-
   snake.unshift(newHead);
+  //snake的array在最前方插入一個單位成為頭
   //畫出頭之後再讓他能讀取keydown
   window.addEventListener("keydown", changeDirection);
 }
