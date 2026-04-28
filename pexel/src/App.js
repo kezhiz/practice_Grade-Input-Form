@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, HashRouter } from "react-router-dom";
 import Layout from "./Layout";
 import Homepage from "./pages/Homepage";
 import About from "./pages/About";
@@ -8,7 +8,7 @@ import "./styles/style.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter basename="/practice_Grade-Input-Form/pexel">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />}></Route>
@@ -16,7 +16,7 @@ function App() {
           <Route path="*" element={<Page404 />}></Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
