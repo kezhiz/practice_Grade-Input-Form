@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/practice_Grade-Input-Form/static/css/main.8f8cd926.css",
+    "main.js": "/practice_Grade-Input-Form/static/js/main.78b53dac.js",
+    "index.html": "/practice_Grade-Input-Form/index.html",
+    "main.8f8cd926.css.map": "/practice_Grade-Input-Form/static/css/main.8f8cd926.css.map",
+    "main.78b53dac.js.map": "/practice_Grade-Input-Form/static/js/main.78b53dac.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8f8cd926.css",
+    "static/js/main.78b53dac.js"
+  ]
+}
