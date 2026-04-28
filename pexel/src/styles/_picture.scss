@@ -1,0 +1,60 @@
+.pictures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  .picture {
+    padding: 1rem;
+    width: 100%;
+    position: relative; /* 作者名稱定位的基準 */
+    @media (min-width: 768px) {
+      width: 20%;
+    }
+
+    @media (min-width: 1024px) {
+      width: 33.33%;
+      max-width: 450px; // 限制最大寬度防止圖片太大
+    }
+
+    .imageContainer {
+      overflow: hidden;
+      height: 300px;
+      @media (min-width: 768px) {
+        height: 40vh; // 大螢幕再恢復 vh 單位
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease;
+        border-radius: 3px 3px 3px 3px;
+        &:hover {
+          transform: scale(1.25);
+        }
+      }
+    }
+  }
+}
+
+/* 作者名 */
+.photo-card__author {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 10px;
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
+  transition: color 0.3s ease;
+}
+
+.photo-card:hover .photo-card__author {
+  color: rgba(255, 255, 255, 0.9);
+}

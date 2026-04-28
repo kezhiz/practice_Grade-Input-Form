@@ -1,0 +1,50 @@
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 0rem;
+  border-bottom: 2px solid rgba(152, 152, 152, 0.08);
+
+  input,
+  button {
+    height: 3rem;
+    font-size: 2.5vh;
+    box-sizing: border-box; // 確保邊框不撐大寬度
+    border: 1px solid rgba(150, 150, 150, 0.377);
+  }
+  input {
+    width: 60%;
+    max-width: 300px;
+    padding: 0.5rem;
+    color: var(--text-primary);
+    background: var(--surface);
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+
+    @media (min-width: 768px) {
+      width: 30%;
+    }
+  }
+  button {
+    width: 25%;
+    max-width: 100px;
+    background: #ffd07941;
+    color: rgb(227, 227, 227);
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    display: flex; // 文字置中
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    @media (min-width: 768px) {
+      width: 20%;
+    }
+    button:hover {
+      background: #917b50;
+    }
+
+    @media (min-width: 768px) {
+      width: 10%;
+    }
+  }
+}

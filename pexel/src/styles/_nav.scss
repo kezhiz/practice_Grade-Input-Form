@@ -1,0 +1,15 @@
+nav {
+  background-color: rgba(0, 0, 0, 0.506);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2rem;
+    li {
+      padding: 0.5rem 1rem;
+      a {
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
