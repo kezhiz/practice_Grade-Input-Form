@@ -9,6 +9,7 @@
   button {
     height: 3rem;
     font-size: 2.5vh;
+    font-family: inherit;
     box-sizing: border-box; // 確保邊框不撐大寬度
     border: 1px solid rgba(150, 150, 150, 0.377);
   }

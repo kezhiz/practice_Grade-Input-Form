@@ -1,7 +1,15 @@
 @charset "UTF-8";
 nav {
+  display: flex;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.506);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center; /* 垂直置中 */
+  padding: 0.5rem 5%;
+  font-size: 2rem;
+}
+nav .navbar_logo span {
+  color: #ac8b4a;
 }
 nav ul {
   display: flex;
@@ -26,6 +34,7 @@ nav ul li a {
 .search button {
   height: 3rem;
   font-size: 2.5vh;
+  font-family: inherit;
   box-sizing: border-box;
   border: 1px solid rgba(150, 150, 150, 0.377);
 }
@@ -147,23 +156,13 @@ nav ul li a {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-:root {
-  --bg: #0a0a0a;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.2);
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "DM Sans", sans-serif;
-  --radius: 4px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(255, 255, 255, 0.946);
+  font-family: "Playfair Display", Georgia, serif;
 }
 
 body {
   color: rgb(157, 157, 157);
   font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
   background-color: black;
 }
 
@@ -197,4 +196,10 @@ button {
   border: 1.5px solid rgb(68, 68, 68);
   border-radius: 4px 4px 4px 4px;
   cursor: pointer;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  align-content: center;
 }/*# sourceMappingURL=style.css.map */

@@ -2,9 +2,11 @@ import React from "react";
 
 const About = () => {
   return (
-    <div>
+    <div className="about" style={{ minHeight: "100vh" }}>
       About
-      <div>關於我:</div>
+      <div>
+        <p>關於我:</p>
+      </div>
     </div>
   );
 };

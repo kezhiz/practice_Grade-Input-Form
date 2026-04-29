@@ -8,7 +8,7 @@ import "./styles/style.css";
 
 function App() {
   return (
-    <HashRouter basename="/practice_Grade-Input-Form/pexel">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />}></Route>

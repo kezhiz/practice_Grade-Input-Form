@@ -1,6 +1,16 @@
 nav {
+  display: flex;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.506);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center; /* 垂直置中 */
+  padding: 0.5rem 5%;
+  font-size: 2rem;
+  .navbar_logo {
+    span {
+      color: #ac8b4a;
+    }
+  }
   ul {
     display: flex;
     justify-content: flex-end;

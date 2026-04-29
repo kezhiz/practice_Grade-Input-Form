@@ -3,27 +3,28 @@
 @import "./footer";
 @import "./picture";
 
+$font-display: "Playfair Display", Georgia, serif;
+$font-body: "DM Sans", sans-serif;
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.946);
+  font-family: $font-display;
 }
 
 :root {
-  --bg: #0a0a0a;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.2);
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-body: "DM Sans", sans-serif;
-  --radius: 4px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  $bg: #0a0a0a;
+  $border: rgba(255, 255, 255, 0.08);
+  $border-hover: rgba(255, 255, 255, 0.2);
+
+  $radius: 4px;
+  $transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
   color: rgb(157, 157, 157);
   font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
   background-color: black;
 }
 
@@ -58,4 +59,9 @@ button {
     border-radius: 4px 4px 4px 4px;
     cursor: pointer;
   }
+}
+.about {
+  display: flex;
+  align-items: center;
+  align-content: center;
 }
